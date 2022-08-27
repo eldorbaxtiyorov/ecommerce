@@ -2,19 +2,39 @@ from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
 import json
-
+from django.shortcuts import render
+from django.contrib.auth import authenticate
 
 # Create your views here.
 def store(request):
-    if request.user.is_authenticated:
+    if request and request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
+        # items = order.orderitem_set.all()
     else:
-        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False  }
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
     products = Product.objects.all()
     context = {'products': products, 'order': order}
     return render(request, 'store/store.html', context)
+
+
+def login(request):
+    # print(111111111111111111111111111111111111111111111111111111111111, request.GET['fname'][0])
+    # print(222222222222222222222222222222222222222222222222222222222222, 'lname' in request and 'fpassword' in request)
+    # def get(request):
+    #     name = request.GET['fname'][0]
+    #     password = request.GET['lpassword'][0]
+    #     print(name, password)
+    #     if authenticate(username=name, password=password) is not None:
+    #         print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    #         # return render(request, 'store/login.html')
+    #     else:
+    #         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    # def f(request):
+    #     return render(request, 'store/login.html')
+
+    pass
+# No backend authenticated the credentials
 
 
 def cart(request):

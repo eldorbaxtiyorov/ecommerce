@@ -46,6 +46,23 @@ h1,h2,h3,h4,h5,h6{
 	font-size: 14px;
 }
 
+#cart-icon1{
+	width:35px;
+	display: inline-block;
+	margin-left:15px;
+}
+
+#cart-total1{
+	display: block;
+	text-align: center;
+	color:#fff;
+	background-color: red;
+	width: 20px;
+	height: 25px;
+	border-radius: 50%;
+	font-size: 14px;
+}
+
 .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
 	margin-top: 10px;
 }
