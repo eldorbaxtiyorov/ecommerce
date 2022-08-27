@@ -104,7 +104,7 @@ class ShippingAddressAPIView(ModelViewSet):
     queryset = ShippingAddress.objects.all()
 
     authentication_classes = [TokenAuthentication]
-   
+
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     ordering_fields = ["address"]
     search_fields = ["address", "city", "state", "zipcode"]
